@@ -22,6 +22,8 @@ class Commentaire
      */
     private $auteur;
 
+
+
     /**
      * @ORM\Column(type="text")
      */
@@ -31,6 +33,11 @@ class Commentaire
      * @ORM\Column(type="datetime")
      */
     private $creation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=annonce::class, inversedBy="commentaires")
+     */
+    private $Annonce;
 
     public function getId(): ?int
     {
@@ -48,6 +55,7 @@ class Commentaire
 
         return $this;
     }
+   
 
     public function getCommentaire(): ?string
     {
@@ -69,6 +77,18 @@ class Commentaire
     public function setCreation(\DateTimeInterface $creation): self
     {
         $this->creation = $creation;
+
+        return $this;
+    }
+
+    public function getAnnonce(): ?annonce
+    {
+        return $this->Annonce;
+    }
+
+    public function setAnnonce(?annonce $Annonce): self
+    {
+        $this->Annonce = $Annonce;
 
         return $this;
     }
