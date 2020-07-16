@@ -1,0 +1,21 @@
+{#
+    on hérite du template "base.html.twig"
+    ça permet de récupérer la structure HTML de ce fichier
+    mais également de remplacer le contenu des "blocks"
+#}
+
+
+{% extends "base.html.twig" %}
+
+{# On écrase le bloc title #}
+{% block title %}
+    Welcome
+{% endblock %}
+
+{# On écrase le bloc body #}
+{% block body %}
+    <p>
+        Page Accueil<br>
+    </p>
+
+{% endblock %}

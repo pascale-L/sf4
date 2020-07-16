@@ -21,11 +21,10 @@ class CommentaireFixtures extends Fixture implements DependentFixtureInterface
         $commentaire
             ->setAuteur($faker->name())
             ->setCommentaire($faker->text())
-            ->setCreation($faker->dateTime())
-            ->setAnnonce($faker->Annonce);
+            ->setCreation($faker->dateTime());
 
             // Récupération aléatoire d'un commentaire par une référence
-            $annonceReference = 'annonce_' . $faker->annonce();
+            $annonceReference = 'annonce_' . $faker->numberBetween(0 ,9);
             $annonce= $this->getReference($annonceReference);
 
             $commentaire->setAnnonce($annonce);
