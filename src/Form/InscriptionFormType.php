@@ -5,8 +5,10 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
@@ -18,7 +20,7 @@ class InscriptionFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailTypepe::class, [
+            ->add('email', EmailType::class, [
                 'constraints' => [
                     //NotBlank = le champs ne soit pas vide
                     new NotBlank(['message' => 'Veuillez indiquer une adresse email']),
@@ -43,9 +45,30 @@ class InscriptionFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('name')
-            ->add('pseudo')
-            ->add('telephone')
+            ->add('name', TextType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez indiquer un nom']),
+                    new Length([
+                        'max' => 50,
+                        'maxMessage' => 'Le nom ne peut contenir plus de {{ limit }} caractères.'
+                    ])
+                ]
+            ])
+            ->add('pseudo', TextType::class, [
+                'constraints' => [ 
+                    new NotBlank(['message' => 'Veuillez indiquer un pseudo.']),
+                    new Length([
+                        'max' => 10,
+                        'maxMessage' => 'Le pseudo ne peut contenir plus de {{ limit }} caractères.'
+                    ])
+                ]
+            ])
+            ->add('telephone', TextType::class,[
+                'constraints' => [  
+                new NotBlank(['message' => 'Veuillez indiquer un numéro de téléphone.']),
+                ]
+
+            ])
         ;
     }
 
