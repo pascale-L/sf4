@@ -33,7 +33,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                      {% if app.user %}
-                            <a class="button is-primary is-small" href="{{ path('account_profile') }}">
+                            <a class="button is-primary is-small">
                             <span class="icon"><i class="fas fa-user-circle"></i></span>
 
                             <span><strong>{{ app.user.username }}</strong></span>
@@ -41,11 +41,12 @@
                         <!--button pour ce déconnecter              chemin pour pouvoir ce déconnecter-->
                         <a class="button is-light is-small" href="{{ path('app_logout') }}">
                             <i class="fas fa-sign-out-alt"></i>
+                            Déconnexion
                         </a>
                       {% else %}
                       <!--button inscription-->
                         <a class="button is-light is-small" href="{{ path('app_register') }}">
-                            <strong>Inscription</strong>
+                          Inscription
                         </a>
                         <a class="button is-light is-small" href="{{ path('app_login') }}">
                             Connexion

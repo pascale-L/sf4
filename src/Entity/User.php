@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UserControllerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass=UserControllerRepository::class)
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="email existant")
  */
 class User implements UserInterface
 {
